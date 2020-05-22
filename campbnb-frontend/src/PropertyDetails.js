@@ -14,7 +14,7 @@ const PropertyDetails = (props) => {
 
             </div>
             <div className="reservation-form">
-                <NewReservationForm property={props.property} userId={props.userId} />
+                <NewReservationForm property={props.property} userId={props.userId}  createReservation={props.createReservation}  />
             </div>
 
         </div>

@@ -38,6 +38,7 @@ class NewReservationForm extends React.Component {
             userId: this.state.userId
         }
 
+        // fetch POST new reservation
         this.props.createReservation(reservationObj)
 
         this.setState({

@@ -1,5 +1,6 @@
 import React from  'react';
 import 'semantic-ui-css/semantic.min.css'
+// import { Icon } from 'semantic-ui-react'
 
 
 class Reservation extends React.Component {
@@ -19,7 +20,8 @@ class Reservation extends React.Component {
                         {this.props.reservation.property.city},{this.props.reservation.property.state}
                     </div>
                     <div className="description">
-                        {this.props.reservation.start_date} - {this.props.reservation.end_date}
+                        Check In: {this.props.reservation.start_date} <br />
+                        Check Out: {this.props.reservation.end_date}
                     </div>
                     <div className="extra content">
                         <span className="right floated">
@@ -27,8 +29,10 @@ class Reservation extends React.Component {
                         </span>
                         <span><i clssName="edit icon"></i> </span>
                     </div>
-                    <div className="ui bottom attached button">
+                    <div className="bottom">
+                        
                         <i clssName="edit icon"></i>
+                        <i class="trash alternate icon"></i>
                     </div>
                 </div>
             </div>

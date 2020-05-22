@@ -32,6 +32,15 @@ class App extends React.Component {
 
   }
 
+  createReservation = (reservationObj) => {
+    console.log(reservationObj) 
+
+  }
+
+  createProperty = (propertyObj) => {
+    console.log(propertyObj)
+  }
+
 
   // onSelectProperty = (props) => {
   //   let propertyId = props.id
@@ -56,7 +65,7 @@ class App extends React.Component {
           <Route exact path="/properties/:id" render= {(routerProps) => { 
             let id = routerProps.match.params.id
             let property = this.state.properties.find(p => p.id == id)
-          return <PropertyDetails userId={this.state.currentUser.id} property={property} />
+          return <PropertyDetails userId={this.state.currentUser} property={property} createReservation={this.createReservation} />
           }  }/>
 
           <Route render={() => <div>404 Not Found</div>}/>

@@ -4,13 +4,23 @@ class NewReservationForm extends React.Component {
 
     constructor(){
         super();
+        
         this.state = {
             startDate: '',
             endDate: '',
-            propertyId: this.props.property.id,
-            userId: this.props.userId 
+            propertyId: null,
+            userId: null
         }
     }
+
+    componentDidMount(){
+        this.setState({
+            propertyId: this.props.property.id,
+            userId: this.props.userId 
+        })
+    }
+
+    
 
     onFormChange = (event) => {
         this.setState({
@@ -44,8 +54,8 @@ class NewReservationForm extends React.Component {
     render(){
         return (
             <form className="new-reservation-form" onSubmit={this.onSubmitForm}>
-                <input name="startDate" value="this.state.startDate" onChange={this.onFormChange} />
-                <input name="endDate" value="this.state.endDate" onChange={this.onFormChange} />
+                <input name="startDate" value={this.state.startDate} onChange={this.onFormChange} />
+                <input name="endDate" value={this.state.endDate} onChange={this.onFormChange} />
                 <input type="submit" value="Book Trip" />
             </form>
         )

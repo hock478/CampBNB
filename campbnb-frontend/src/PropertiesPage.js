@@ -14,8 +14,9 @@ class PropertiesPage extends React.Component {
 
         fetch("http://localhost:3000/properties")
     .then(resp => resp.json())
-    .then(data => { this.setState({ properties: data })
+    .then(data => { 
     localStorage.properties = JSON.stringify(data)
+    this.setState({ properties: JSON.parse(localStorage.properties) })
   })
 
     }

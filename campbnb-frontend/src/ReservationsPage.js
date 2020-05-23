@@ -13,14 +13,15 @@ componentDidMount(){
 
     fetch(`http://localhost:3000/reservations/${localStorage.user}`)
     .then(resp => resp.json())
-    .then(resos => {this.setState({ reservations: resos })
+    .then(resos => {
     localStorage.reservations = JSON.stringify(resos)
+    this.setState({ reservations: JSON.parse(localStorage.reservations) })
   })
 
 }
     render(){
         return <div className="reservations-container">
-            <ReservationsContainer reservations={JSON.parse(localStorage.reservations)} /> 
+            <ReservationsContainer reservations={this.state.reservations} /> 
         </div>
     }
 }

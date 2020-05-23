@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 class Reservation extends React.Component {
 
+    
 
     render(){
         return (

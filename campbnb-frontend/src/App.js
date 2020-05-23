@@ -24,11 +24,16 @@ class App extends React.Component {
   componentDidMount(){
     fetch("http://localhost:3000/properties")
     .then(resp => resp.json())
-    .then(data => this.setState({ properties: data }))
+    .then(data => { this.setState({ properties: data })
+    localStorage.properties = JSON.stringify(data)
+  })
 
     fetch(`http://localhost:3000/reservations/${this.state.currentUser}`)
     .then(resp => resp.json())
     .then(resos => this.setState({ reservations: resos }))
+
+    localStorage.user = this.state.currentUser
+  
 
   }
 
@@ -64,8 +69,11 @@ class App extends React.Component {
           <Route exact path="/reservations" render={() =><ReservationsPage reservations={this.state.reservations} />} />
           <Route exact path="/properties/:id" render= {(routerProps) => { 
             let id = routerProps.match.params.id
-            let property = this.state.properties.find(p => p.id == id)
-          return <PropertyDetails userId={this.state.currentUser} property={property} createReservation={this.createReservation} />
+            let test = this.state
+            let property = JSON.parse(localStorage.properties).find(p => p.id === parseInt(id))
+    
+            localStorage.property = JSON.stringify(property)
+          return <PropertyDetails userId={localStorage.user} property={JSON.parse(localStorage.property)} createReservation={this.createReservation} />
           }  }/>
 
           <Route render={() => <div>404 Not Found</div>}/>

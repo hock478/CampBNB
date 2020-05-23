@@ -22,18 +22,8 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    fetch("http://localhost:3000/properties")
-    .then(resp => resp.json())
-    .then(data => { this.setState({ properties: data })
-    localStorage.properties = JSON.stringify(data)
-  })
-
-    fetch(`http://localhost:3000/reservations/${this.state.currentUser}`)
-    .then(resp => resp.json())
-    .then(resos => this.setState({ reservations: resos }))
 
     localStorage.user = this.state.currentUser
-  
 
   }
 
@@ -67,11 +57,10 @@ class App extends React.Component {
           <Header className="App-header" />
           <Navbar />
         <Switch>
-          <Route exact path="/" render={() => <PropertiesPage properties={this.state.properties} /> } />
-          <Route exact path="/reservations" render={() =><ReservationsPage reservations={this.state.reservations} />} />
+          <Route exact path="/" render={() => <PropertiesPage /> } />
+          <Route exact path="/reservations" render={() =><ReservationsPage />} />
           <Route exact path="/properties/:id" render= {(routerProps) => { 
             let id = routerProps.match.params.id
-            let test = this.state
             let property = JSON.parse(localStorage.properties).find(p => p.id === parseInt(id))
     
             localStorage.property = JSON.stringify(property)

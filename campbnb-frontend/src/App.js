@@ -61,7 +61,9 @@ class App extends React.Component {
   render() {
     
       return (
+        
         <div className="App">
+          
           <Header className="App-header" />
           <Navbar />
         <Switch>
@@ -75,6 +77,10 @@ class App extends React.Component {
             localStorage.property = JSON.stringify(property)
           return <PropertyDetails userId={localStorage.user} property={JSON.parse(localStorage.property)} createReservation={this.createReservation} />
           }  }/>
+          <Route exact path="/messages" render={() => <h2>Messages Page</h2> } />
+          <Route exact path="/about" render={() => <h2>About Page</h2> } />
+
+
 
           <Route render={() => <div>404 Not Found</div>}/>
         </Switch>

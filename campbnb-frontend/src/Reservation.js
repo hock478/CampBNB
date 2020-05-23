@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 class Reservation extends React.Component {
 
-    
+
 
     render(){
         return (
@@ -28,12 +28,12 @@ class Reservation extends React.Component {
                         <span className="right floated">
                             ${this.props.reservation.property.price_per_night} per night 
                         </span>
-                        <span><i clssName="edit icon"></i> </span>
+                        <span><i className="edit icon"></i> </span>
                     </div>
                     <div className="bottom">
                         
-                        <i clssName="edit icon"></i>
-                        <i class="trash alternate icon"></i>
+                        <i className="edit icon"></i>
+                        <i className="trash alternate icon"></i>
                     </div>
                 </div>
             </div>

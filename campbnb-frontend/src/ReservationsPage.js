@@ -11,7 +11,7 @@ class ReservationPage extends React.Component {
 
 componentDidMount(){
 
-    fetch(`http://localhost:3000/reservations/${this.props.user.id}`)
+    fetch(`http://localhost:3000/reservations/${localStorage.user}`)
     .then(resp => resp.json())
     .then(resos => {
     localStorage.reservations = JSON.stringify(resos)

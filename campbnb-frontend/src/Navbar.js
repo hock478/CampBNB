@@ -19,13 +19,23 @@ class Navbar extends React.Component {
         document.getElementById("/").className = "active item"
         this.setState({active: "/"})
        }else{
-        document.getElementById(b.split("/")[1]).className = "active item"
-        this.setState({active: b.split("/")[1]})
+        this.logicalFunction()
        }
        
     //    document.getElementById(a).className = "active item"
-
     }
+
+    logicalFunction = () => {
+      let b = this.props.history.location.pathname
+      if(b.split("/")[1] === "login"){
+        document.getElementById(this.state.active).className = "active item"
+        this.setState({active: this.state.active})
+      }else{
+        document.getElementById(b.split("/")[1]).className = "active item"
+        this.setState({active: b.split("/")[1]})
+      }
+    }
+
     makeActive = (event) => {
        
        

@@ -6,8 +6,9 @@ import Navbar from './Navbar'
 import PropertiesPage from './PropertiesPage'
 import PropertyDetails from './PropertyDetails'
 import ReservationsPage from './ReservationsPage'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, NavLink} from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
+import Login from './Login';
 
 
 class App extends React.Component {
@@ -15,7 +16,7 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      currentUser: 2,
+      currentUser: JSON.parse(localStorage.user),
       properties: [],
       reservations: []
     }
@@ -23,7 +24,8 @@ class App extends React.Component {
 
   componentDidMount(){
 
-    localStorage.user = this.state.currentUser
+    this.setState({currentUser: JSON.parse(localStorage.user)})
+  
 
   }
 
@@ -36,6 +38,12 @@ class App extends React.Component {
     console.log(propertyObj)
   }
 
+  updateCurrentUser = (user) => {
+    console.log(user)
+    localStorage.user = JSON.stringify(user)
+    
+    this.setState({currentUser: user})
+  }
 
   // onSelectProperty = (props) => {
   //   let propertyId = props.id
@@ -57,10 +65,12 @@ class App extends React.Component {
           <Header className="App-header" />
           <Navbar />
         <Switch>
+          
           <Route exact path="/" render={() => <PropertiesPage /> } />
-          <Route exact path="/reservations" render={() =><ReservationsPage />} />
+          <Route exact path="/reservations" render={() =>  localStorage.user !== "null" ?  <ReservationsPage user={this.state.currentUser}/> : <Redirect to="/login"/> } />
           <Route exact path="/properties/:id" render= {(routerProps) => { 
             let id = routerProps.match.params.id
+            
             let property = JSON.parse(localStorage.properties).find(p => p.id === parseInt(id))
     
             localStorage.property = JSON.stringify(property)
@@ -68,6 +78,7 @@ class App extends React.Component {
           }  }/>
           <Route exact path="/messages" render={() => <h2>Messages Page</h2> } />
           <Route exact path="/about" render={() => <h2>About Page</h2> } />
+          <Route exact path="/login" render={() => <Login updateCurrentUser={this.updateCurrentUser} /> }/>
 
 
 

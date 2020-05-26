@@ -1,5 +1,6 @@
 import React from  'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter,Redirect } from 'react-router-dom';
+
 
 class Navbar extends React.Component {
     constructor(){
@@ -67,7 +68,7 @@ class Navbar extends React.Component {
     About
   </a>
   <div className="right menu">
-    <a className="ui item">
+    <a className="ui item" onClick={() => {localStorage.user = null; return <Redirect to="/about"/>}}>
       Logout
     </a>
   </div>

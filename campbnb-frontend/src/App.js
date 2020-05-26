@@ -9,6 +9,7 @@ import ReservationsPage from './ReservationsPage'
 import {Route, Switch, NavLink} from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import Login from './Login';
+import About from './About'
 
 
 class App extends React.Component {
@@ -77,8 +78,8 @@ class App extends React.Component {
           return <PropertyDetails userId={localStorage.user} property={JSON.parse(localStorage.property)} createReservation={this.createReservation} />
           }  }/>
           <Route exact path="/messages" render={() => <h2>Messages Page</h2> } />
-          <Route exact path="/about" render={() => <h2>About Page</h2> } />
-          <Route exact path="/login" render={() => <Login updateCurrentUser={this.updateCurrentUser} /> }/>
+          <Route exact path="/about" component={About}/>
+          <Route exact path="/login" render={() => localStorage.user !== "null" ? <Redirect to="/about"/> : <Login updateCurrentUser={this.updateCurrentUser}  /> }/>
 
 
 

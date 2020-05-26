@@ -6,7 +6,7 @@ class Navbar extends React.Component {
     constructor(){
         super()
         this.state = {
-            active: "/"
+            active: "/",
             
         }
     
@@ -16,7 +16,7 @@ class Navbar extends React.Component {
        let a = this.state.active
        let b = this.props.history.location.pathname
        
-       if (b.split("/")[0] === b.split("/")[1]){
+       if (b.split("/")[0] === b.split("/")[1] || b.split("/").length > 2){
         document.getElementById("/").className = "active item"
         this.setState({active: "/"})
        }else{
@@ -31,6 +31,8 @@ class Navbar extends React.Component {
       if(b.split("/")[1] === "login"){
         document.getElementById(this.state.active).className = "active item"
         this.setState({active: this.state.active})
+      }else if(b.split("/").length > 2){
+        this.setState({active: "/"})
       }else{
         document.getElementById(b.split("/")[1]).className = "active item"
         this.setState({active: b.split("/")[1]})
@@ -47,6 +49,17 @@ class Navbar extends React.Component {
         this.props.history.push(`${event.target.id}`)
         
         
+    }
+
+    logged = (event) => {
+      if(event.target.innerText === "Log In"){
+        this.props.history.location.pathname = "/"
+        this.props.history.push("login")
+      }else{
+        localStorage.user = null
+        this.props.changeLog()
+        
+      }
     }
    
   
@@ -67,9 +80,12 @@ class Navbar extends React.Component {
   <a className="item" onClick={this.makeActive} id="about">
     About
   </a>
+  <a className="item" onClick={this.makeActive} id="profile">
+    Profile
+  </a>
   <div className="right menu">
-    <a className="ui item" onClick={() => {localStorage.user = null; return <Redirect to="/about"/>}}>
-      Logout
+    <a className="ui item" onClick={(event) =>  {this.logged(event)}}>
+        {this.props.loggedIn === false ? "Log In": "Log Out"}
     </a>
   </div>
 </div>

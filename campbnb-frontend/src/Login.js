@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'semantic-ui-react'
 
 export default class Login extends React.Component{
 
@@ -33,18 +34,47 @@ export default class Login extends React.Component{
             alert(userData.error_message)
           }else{
             this.props.updateCurrentUser(userData)
+            this.props.changeLog()
           }
         })
       };
 
 
     render(){
-        return <form className="ui form" onSubmit={this.handleLoginSubmit}>
-          <label>Username</label>
-          <input type="text" name="username" placeholder="First Name" value={this.state.username} onChange={this.handleChange}/>
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Last Name" value={this.state.password} onChange={this.handleChange}/>
-        <button className="ui button" type="submit">Submit</button>
-      </form>
+        return (
+          <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+            <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' color='teal' textAlign='center'>
+            <Icon name='bed' /> Log-in to your account
+            </Header>
+
+            <Form className="ui form" onSubmit={this.handleLoginSubmit} size='large'>
+              <Segment stacked>
+            
+           
+              <Form.Input fluid icon='user' iconPosition='left' name="username" placeholder='E-mail address' value={this.state.username} onChange={this.handleChange} />
+              <Form.Input
+                    fluid
+                    icon='lock'
+                    iconPosition='left'
+                    placeholder='Password'
+                    type='password'
+                    name="password"
+                    value={this.state.password} onChange={this.handleChange}
+                  />
+                    <Button color='teal' fluid size='large' type="submit">
+                       Login
+                    </Button>
+              </Segment> 
+            </Form>
+
+            <Message>
+               New to us? <a href='#'>Sign Up</a>
+            </Message>
+
+          </Grid.Column>
+      </Grid> 
+
+        )
     }
 }

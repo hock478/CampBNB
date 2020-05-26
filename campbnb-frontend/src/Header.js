@@ -1,11 +1,13 @@
 import React from  'react';
+import { Header, Icon } from 'semantic-ui-react'
 
-class Header extends React.Component {
 
+const HeaderWithIcon = () => (
+    <Header as='h2'>
+      <Icon name='bed' />
+      <Header.Content>CampingBNB</Header.Content>
+    </Header>
+  )
 
-    render(){
-        return <h1>Header</h1>
-    }
-}
-
-export default Header
+  
+  export default HeaderWithIcon

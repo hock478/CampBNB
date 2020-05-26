@@ -28,7 +28,6 @@ class Reservation extends React.Component {
                         <span className="right floated">
                             ${this.props.reservation.property.price_per_night} per night 
                         </span>
-                        <span><i className="edit icon"></i> </span>
                     </div>
                     <div className="bottom">
                         

@@ -10,6 +10,7 @@ import {Route, Switch, NavLink} from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import Login from './Login';
 import About from './About'
+import Profile from './Profile'
 
 
 class App extends React.Component {
@@ -19,7 +20,10 @@ class App extends React.Component {
     this.state = {
       currentUser: JSON.parse(localStorage.user),
       properties: [],
-      reservations: []
+      reservations: [],
+      loggedIn: JSON.parse(localStorage.user) === null ? false : true
+    
+  
     }
   }
 
@@ -32,13 +36,14 @@ class App extends React.Component {
 
   createReservation = (reservationObj) => {
     console.log(reservationObj) 
-
   }
 
   createProperty = (propertyObj) => {
     console.log(propertyObj)
   }
 
+
+  
   updateCurrentUser = (user) => {
     console.log(user)
     localStorage.user = JSON.stringify(user)
@@ -55,6 +60,9 @@ class App extends React.Component {
   //   return <Redirect push to={`/properties/${propertyId}`}/>
     
   // }
+  changeLog = () => {
+    this.setState({loggedIn: !this.state.loggedIn})
+  }
 
 
   render() {
@@ -64,7 +72,7 @@ class App extends React.Component {
         <div className="App">
           
           <Header className="App-header" />
-          <Navbar />
+          <Navbar currentUser={this.state.currentUser} changeLog={this.changeLog} loggedIn={this.state.loggedIn}/>
         <Switch>
           
           <Route exact path="/" render={() => <PropertiesPage /> } />
@@ -77,9 +85,10 @@ class App extends React.Component {
             localStorage.property = JSON.stringify(property)
           return <PropertyDetails userId={localStorage.user} property={JSON.parse(localStorage.property)} createReservation={this.createReservation} />
           }  }/>
-          <Route exact path="/messages" render={() => <h2>Messages Page</h2> } />
           <Route exact path="/about" component={About}/>
-          <Route exact path="/login" render={() => localStorage.user !== "null" ? <Redirect to="/about"/> : <Login updateCurrentUser={this.updateCurrentUser}  /> }/>
+          <Route exact path="/profile" render={() => localStorage.user !== "null" ? <Profile /> : <Redirect to="/login"/> } />
+
+          <Route exact path="/login" render={() => localStorage.user !== "null" ? <Redirect to="/profile"/> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog} /> }/>
 
 
 

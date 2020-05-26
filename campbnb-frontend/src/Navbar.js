@@ -89,9 +89,6 @@ class Navbar extends React.Component {
     </a>
   </div>
 </div>
-<div className="ui segment">
-  <p></p>
-</div>
         </div>)
     }
 }

@@ -57,24 +57,25 @@ class NewReservationForm extends React.Component {
   
     render(){
         return (
+          
             <Form className="ui form" onSubmit={this.onSubmitForm}>
-                <h4 class="ui dividing header">Reserve This Property</h4>
+                <h4 className="ui dividing header">Reserve This Property</h4>
 
                 {/* <div class="ui form"> */}
-                        <div class="field">
+                        <div className="field">
                             <label>Start date</label>
-                            <div class="ui calendar" id="rangestart">
-                            <div class="ui input left icon">
-                                <i class="calendar icon"></i>
+                            <div className="ui calendar" id="rangestart">
+                            <div className="ui input left icon">
+                                <i className="calendar icon"></i>
                                 <input placeholder="Start" name="startDate" type="date" value={this.state.startDate} onChange={this.onFormChange} />
                             </div>
                             </div>
                         </div>
-                        <div class="field">
+                        <div className="field">
                             <label>End date</label>
-                            <div class="ui calendar" id="rangeend">
-                            <div class="ui input left icon">
-                                <i class="calendar icon"></i>
+                            <div className="ui calendar" id="rangeend">
+                            <div className="ui input left icon">
+                                <i className="calendar icon"></i>
                                 <input type="date" placeholder="End" name="endDate" value={this.state.endDate} onChange={this.onFormChange} />
                             </div>
                             </div>
@@ -87,8 +88,8 @@ class NewReservationForm extends React.Component {
                 {/* <input name="startDate" type="date" value={this.state.startDate} onChange={this.onFormChange} />
                 <input name="endDate" type="date" value={this.state.endDate} onChange={this.onFormChange} /> */}
                 <ConfirmReservation reservation={this.state} createReservation={this.props.createReservation}/>
-                <Button type="submit" value="Book Trip">Let's go!</Button>
             </Form>
+         
         )
     }
 

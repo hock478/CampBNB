@@ -6,6 +6,14 @@ import 'semantic-ui-css/semantic.min.css'
 class Reservation extends React.Component {
 
 
+    onEditClick = () => {
+        console.log("clicking edit")
+    }
+
+    onDeleteClick = () => {
+        console.log("clicking delete")
+    }
+
 
     render(){
         return (
@@ -29,10 +37,11 @@ class Reservation extends React.Component {
                             ${this.props.reservation.property.price_per_night} per night 
                         </span>
                     </div>
+                    <br />
                     <div className="bottom">
                         
-                        <i className="edit icon"></i>
-                        <i className="trash alternate icon"></i>
+                        <i className="edit icon" onClick={this.onEditClick}></i>
+                        <i className="trash alternate icon" onClick={this.onDeleteClick} ></i>
                     </div>
                 </div>
             </div>

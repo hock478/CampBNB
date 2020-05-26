@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Confirm } from 'semantic-ui-react'
+import { Redirect, Switch } from "react-router-dom";
+
 
 class ConfirmReservation extends Component {
 
-    state = { open: false }
+    state = { open: false  }
 
     handleButtonClick = () => this.setState({ open: true })
     handleConfirm = () => {
@@ -21,7 +23,7 @@ class ConfirmReservation extends Component {
 
         this.setState({ open: false })    
         console.log(this.props)
-
+        return <Switch><Redirect push to="/reservations" /></Switch>
         //fetch POST reservation
         //redirect to reservations page 
     }
@@ -33,7 +35,7 @@ class ConfirmReservation extends Component {
   
     render() {
       return (
-        <div>
+        <span>
           <Button onClick={this.handleButtonClick}>Book it!</Button>
           <Confirm
           header='Confirm Reservation'
@@ -44,7 +46,7 @@ class ConfirmReservation extends Component {
           size='large'
           />
        
-      </div>
+      </span>
       )
     }
 }

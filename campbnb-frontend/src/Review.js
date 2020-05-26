@@ -6,8 +6,8 @@ export default class Review extends React.Component {
         return(
             
   <Comment>
-  <Comment.Avatar src={this.props.content.image_url} />
-  <Comment.Content>
+    <Comment.Avatar src={this.props.content.image_url} />
+    <Comment.Content>
         <Comment.Author as='a'>{this.props.content.fullname}</Comment.Author>
         <Comment.Metadata>
           <div>Yesterday at 12:30AM</div>
@@ -15,11 +15,11 @@ export default class Review extends React.Component {
         <Comment.Text>
           <p>{this.props.review.content}</p>
         </Comment.Text>
-        <Comment.Actions>
+        {/* <Comment.Actions>
           <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
-      </Comment.Content>
-      </Comment>
+        </Comment.Actions> */}
+  </Comment.Content>
+  </Comment>
         )
     }
 }

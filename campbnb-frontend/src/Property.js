@@ -26,11 +26,12 @@ export default class Property extends React.Component{
                     <span className="right floated">
                         {this.props.property.price_per_night} per night 
                     </span>
-                    <i className="edit icon"></i>
                 </div>
+
+                <br />
                     <Link to={`/properties/${this.props.property.id}`} > 
                         <button property-id={this.props.property.id} >
-                            DETAILS 
+                        <i className="edit icon"></i> DETAILS 
                         </button>
                     </Link>
 

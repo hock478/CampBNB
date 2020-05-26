@@ -9,17 +9,17 @@ class NewReservationForm extends React.Component {
         super();
         
         this.state = {
-            startDate: '',
-            endDate: '',
-            propertyId: null,
-            userId: null
+            start_date: '',
+            end_date: '',
+            property_id: null,
+            user_id: null
         }
     }
 
     componentDidMount(){
         this.setState({
-            propertyId: this.props.property.id,
-            userId: this.props.userId 
+            property_id: this.props.property.id,
+            user_id: this.props.userId
         })
     }
 
@@ -31,24 +31,35 @@ class NewReservationForm extends React.Component {
       })
     }
 
-    onSubmitForm = (event) => {
-        event.preventDefault()
+    onSubmitForm = () => {
+        // event.preventDefault()
 
         let reservationObj = {
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
-            propertyId: this.state.propertyId, 
-            userId: this.state.userId
+            start_date: this.state.start_date,
+            end_date: this.state.end_date,
+            property_id: this.state.property_id, 
+            user_id: this.state.user_id
         }
 
+        debugger
+
         // fetch POST new reservation
-        this.props.createReservation(reservationObj)
+        fetch('https://localhost:3000/reservations', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(reservationObj)
+            }).then(res => res.json())
+            .then( data => {
+                console.log("created new reservation")  
+                window.location.href="http://localhost:3001/reservations"
+            }
+            )
 
         this.setState({
-            startDate: '',
-            endDate: '',
-            propertyId: this.props.propertyId,
-            userId: this.props.userId 
+            start_date: '',
+            end_date: '',
+            property_id: this.props.property_id,
+            user_id: this.props.user_id 
         })
 
 
@@ -67,7 +78,7 @@ class NewReservationForm extends React.Component {
                             <div className="ui calendar" id="rangestart">
                             <div className="ui input left icon">
                                 <i className="calendar icon"></i>
-                                <input placeholder="Start" name="startDate" type="date" value={this.state.startDate} onChange={this.onFormChange} />
+                                <input placeholder="Start" name="start_date" type="date" value={this.state.startDate} onChange={this.onFormChange} />
                             </div>
                             </div>
                         </div>
@@ -76,7 +87,7 @@ class NewReservationForm extends React.Component {
                             <div className="ui calendar" id="rangeend">
                             <div className="ui input left icon">
                                 <i className="calendar icon"></i>
-                                <input type="date" placeholder="End" name="endDate" value={this.state.endDate} onChange={this.onFormChange} />
+                                <input type="date" placeholder="End" name="end_date" value={this.state.endDate} onChange={this.onFormChange} />
                             </div>
                             </div>
                         </div>
@@ -87,7 +98,7 @@ class NewReservationForm extends React.Component {
 
                 {/* <input name="startDate" type="date" value={this.state.startDate} onChange={this.onFormChange} />
                 <input name="endDate" type="date" value={this.state.endDate} onChange={this.onFormChange} /> */}
-                <ConfirmReservation reservation={this.state} createReservation={this.props.createReservation}/>
+                <ConfirmReservation reservation={this.state} createReservation={this.onSubmitForm}/>
             </Form>
          
         )

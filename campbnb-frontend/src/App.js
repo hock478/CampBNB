@@ -35,9 +35,7 @@ class App extends React.Component {
 
   }
 
-  createReservation = (reservationObj) => {
-    console.log(reservationObj) 
-  }
+ 
 
   createProperty = (propertyObj) => {
     console.log(propertyObj)
@@ -85,7 +83,7 @@ class App extends React.Component {
             let property = JSON.parse(localStorage.properties).find(p => p.id === parseInt(id))
     
             localStorage.property = JSON.stringify(property)
-          return <PropertyDetails userId={localStorage.user} property={JSON.parse(localStorage.property)} createReservation={this.createReservation} />
+          return <PropertyDetails userId={JSON.parse(localStorage.user).id} property={JSON.parse(localStorage.property)}  />
           }  }/>
           <Route exact path="/about" component={About}/>
           <Route exact path="/profile" render={() => localStorage.user !== "null" ? <Profile /> : <Redirect to="/login"/> } />

@@ -19,10 +19,10 @@ class ConfirmReservation extends Component {
     // }
 
     //     // fetch POST new reservation
-    //   this.props.createReservation(reservationObj)
 
         this.setState({ open: false })    
-        window.location.href="http://localhost:3001/reservations"
+        this.props.createReservation()
+
              
 
         //fetch POST reservation

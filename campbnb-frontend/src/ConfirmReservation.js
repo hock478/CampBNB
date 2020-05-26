@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Confirm } from 'semantic-ui-react'
-import { Redirect, Switch } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 
 class ConfirmReservation extends Component {
@@ -22,8 +22,9 @@ class ConfirmReservation extends Component {
     //   this.props.createReservation(reservationObj)
 
         this.setState({ open: false })    
-        console.log(this.props)
-        return <Switch><Redirect push to="/reservations" /></Switch>
+        window.location.href="http://localhost:3001/reservations"
+             
+
         //fetch POST reservation
         //redirect to reservations page 
     }

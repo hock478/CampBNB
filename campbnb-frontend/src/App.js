@@ -18,10 +18,11 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      currentUser: JSON.parse(localStorage.user),
+      currentUser: JSON.parse(localStorage.user),   //JSON.parse(localStorage.user)
       properties: [],
       reservations: [],
       loggedIn: JSON.parse(localStorage.user) === null ? false : true
+      // JSON.parse(localStorage.user) === null ? false : true
     
   
     }
@@ -79,7 +80,8 @@ class App extends React.Component {
           <Route exact path="/reservations" render={() =>  localStorage.user !== "null" ?  <ReservationsPage user={this.state.currentUser}/> : <Redirect to="/login"/> } />
           <Route exact path="/properties/:id" render= {(routerProps) => { 
             let id = routerProps.match.params.id
-            
+           
+            // need to change this so it doesn't rely on local storage but on state. 
             let property = JSON.parse(localStorage.properties).find(p => p.id === parseInt(id))
     
             localStorage.property = JSON.stringify(property)

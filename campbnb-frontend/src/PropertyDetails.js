@@ -3,6 +3,7 @@ import NewReservationForm from './NewReservationForm'
 import { Segment, Image } from 'semantic-ui-react'
 import Breadcrumb from './Breadcrumb'
 import Review from './Review'
+import { Button, Comment, Form, Header } from 'semantic-ui-react'
 
 
 
@@ -58,7 +59,7 @@ class PropertyDetails extends React.Component {
                 Location/Map 
                 Reviews
                 
-                <div className="ui comments">
+                <Comment.Group>
                 {this.state.reviews.map(review => {
                     let i = this.state.reviews.indexOf(review)
                     
@@ -67,7 +68,7 @@ class PropertyDetails extends React.Component {
                 }
                 )
                 }
-                </div>
+                </Comment.Group>
             </Segment>
             <Segment>
                 <NewReservationForm property={this.props.property} userId={this.props.userId}  createReservation={this.props.createReservation}  />

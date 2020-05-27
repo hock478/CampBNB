@@ -38,6 +38,7 @@ class ReservationPage extends React.Component {
 
     render(){
         return <div className="reservations-container">
+            <h1>My Reservations</h1>
             <ReservationsContainer reservations={this.state.reservations}  onDelete={this.onReservationDelete} /> 
         </div>
     }

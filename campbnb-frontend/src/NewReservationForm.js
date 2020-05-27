@@ -59,15 +59,9 @@ class NewReservationForm extends React.Component {
             }
             )
 
-        // this.setState({
-        //     start_date: '',
-        //     end_date: '',
-        //     property_id: this.props.property_id,
-        //     user_id: this.props.user_id 
-        // })
-
-
     }
+
+
 
   
     render(){
@@ -97,14 +91,10 @@ class NewReservationForm extends React.Component {
                             </div>
                             </div>
                         </div>
-                {/* </div> */}
                 <br/>
 
 
-
-                {/* <input name="startDate" type="date" value={this.state.startDate} onChange={this.onFormChange} />
-                <input name="endDate" type="date" value={this.state.endDate} onChange={this.onFormChange} /> */}
-                <ConfirmReservation reservation={this.state} createReservation={this.onSubmitForm} user={this.props.user}/>
+                <ConfirmReservation reservation={this.state} property={this.props.property} createReservation={this.onSubmitForm} user={this.props.user}/>
             </Form>
          
         )

@@ -11,6 +11,9 @@ import { Redirect } from 'react-router-dom'
 import Login from './Login';
 import About from './About'
 import Profile from './Profile'
+import Community from './Community'
+import CommunityPage from './CommunityPage'
+import CommunityDetails from './CommunityDetails'
 
 
 class App extends React.Component {
@@ -105,7 +108,15 @@ class App extends React.Component {
           }  }/>
           <Route exact path="/about" component={About}/>
         <Route exact path="/profile" render={() => this.state.currentUser ? <Profile /> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog } /> } />
+        <Route exact path="/community" render={() => <CommunityPage/>}/>
+        <Route exact path="/communities/:id" render= {(routerProps) => {
+      
+          let id = routerProps.match.params.id
+         return <CommunityDetails id={id} user={this.state.currentUser}/>
 
+          
+
+        }}/>
           {/* <Route exact path="/login" render={() => this.state.currentUser ? <Redirect to="/"/> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog} /> }/> */}
 
 

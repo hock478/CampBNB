@@ -31,14 +31,21 @@ class PropertyDetails extends React.Component {
         
                 {/* <Breadcrumb property={this.props.property.name} />  */}
             
-            <Segment.Group horizontal>
-                <Segment>{this.props.property.name}</Segment>
-                <Segment><Image src={this.props.property.img_url} /></Segment>
-        </Segment.Group>
+            <div className="ui relaxed grid">
+                <div className="two column row">
+                <div className="five wide column">
+                    <br />
+                    <h3>{this.props.property.name}</h3>
+                </div>
+                <div className="eleven wide column"><img src={this.props.property.img_url} /></div>
+                </div>
+            </div>
 
             <Segment.Group horizontal>
             <Segment>
-                About the Owner
+            <h4 className="ui dividing header">ABOUT</h4>
+
+
                 <div className="ui card">
                     <div className="image">
                         <img src={this.props.property.owner.image_url}/>
@@ -56,9 +63,10 @@ class PropertyDetails extends React.Component {
                         </a>
                     </div>
                 </div>
-                Location/Map 
-                Reviews
-                
+                <h4 className="ui dividing header">LOCATION</h4>
+                    <p>some details about the location</p>
+
+                <h4 className="ui dividing header">REVIEWS</h4>
                 <Comment.Group>
                 {this.state.reviews.map(review => {
                     let i = this.state.reviews.indexOf(review)

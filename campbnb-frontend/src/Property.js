@@ -21,21 +21,28 @@ export default class Property extends React.Component{
                 </div>
                 <div className="description">
                     {this.props.property.details}
+                    <br />
+                    <br />
+                    <p>
+                        <b> ${this.props.property.price_per_night} per night </b>
+                    </p>
                 </div>
-                <div className="extra content">
+
+                {/* <div className="extra content">
                     <span className="right floated">
                         {this.props.property.price_per_night} per night 
                     </span>
-                </div>
-
-                <br />
-                    <Link to={`/properties/${this.props.property.id}`} > 
-                        <button property-id={this.props.property.id} >
-                        <i className="edit icon"></i> DETAILS 
-                        </button>
-                    </Link>
-
+                </div> */}
             </div>
+                
+                <div class="ui bottom attached button">
+                    <Link to={`/properties/${this.props.property.id}`} > 
+                        {/* <button property-id={this.props.property.id} > */}
+                        <i className="plane icon"></i> VIEW PROPERTY
+                        {/* </button> */}
+                    </Link>
+                </div>
+           
         </div>
         )
     }

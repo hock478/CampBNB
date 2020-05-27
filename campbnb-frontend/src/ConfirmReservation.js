@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Confirm } from 'semantic-ui-react'
-// import { Redirect } from "react-router-dom";
+import ResoDetailConfirm from './ResoDetailConfirm'
 
 
 class ConfirmReservation extends Component {
 
-    state = { open: false  }
+    state = { open: false  }  
 
     handleButtonClick = () => {
       if(this.props.user && this.props.user !== "null"){
@@ -18,23 +18,10 @@ class ConfirmReservation extends Component {
 
       event.preventDefault()
 
-    //   let reservationObj = {
-    //     startDate: this.props.startDate,
-    //     endDate: this.props.endDate,
-    //     propertyId: this.props.propertyId, 
-    //     userId: this.props.userId
-    // }
-
-    //     // fetch POST new reservation
-
         this.setState({ open: false })    
         this.props.createReservation(event)
-
-             
-
-        //fetch POST reservation
-        //redirect to reservations page 
     }
+
     handleCancel = () => {
         //simply closes for reservation confirmation form
         this.setState({ open: false })
@@ -47,7 +34,7 @@ class ConfirmReservation extends Component {
           <Button onClick={this.handleButtonClick}>Book it!</Button>
           <Confirm
           header='Confirm Reservation'
-          content='this is custom content'
+          content={<ResoDetailConfirm property={this.props.property} reservation={this.props.reservation} />}
           open={this.state.open}
           onCancel={this.handleCancel }
           onConfirm={this.handleConfirm }

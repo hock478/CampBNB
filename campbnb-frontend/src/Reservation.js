@@ -5,6 +5,18 @@ import 'semantic-ui-css/semantic.min.css'
 
 class Reservation extends React.Component {
 
+    constructor(){
+        super()
+        this.state = {
+            reservation_id: null 
+        }
+    }
+
+    componentDidMount(){
+        this.setState({
+            reservation_id: this.props.reservation.id 
+        })
+    }
 
     onEditClick = () => {
         console.log("clicking edit")
@@ -41,7 +53,7 @@ class Reservation extends React.Component {
                     <div className="bottom">
                         
                         <i className="edit icon" onClick={this.onEditClick}></i>
-                        <i className="trash alternate icon" onClick={this.onDeleteClick} ></i>
+                        <i className="trash alternate icon" onClick={() => this.props.onDelete(this.props.reservation) } ></i>
                     </div>
                 </div>
             </div>

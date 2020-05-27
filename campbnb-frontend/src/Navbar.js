@@ -54,11 +54,13 @@ class Navbar extends React.Component {
     logged = (event) => {
       if(event.target.innerText === "Log In"){
         this.props.history.location.pathname = "/"
-        this.props.history.push("login")
+        // this.props.history.push("login")
       }else{
         localStorage.clear()
+        this.props.updateCurrentUser(null)
         this.props.changeLog()
-        // this.props.history.location.pathname = "/"
+        this.props.history.location.pathname = "/"
+
         // this.setState({active: "/"})
         
       }

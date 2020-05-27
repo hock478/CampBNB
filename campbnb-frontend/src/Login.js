@@ -34,7 +34,8 @@ export default class Login extends React.Component{
             alert(userData.error_message)
           }else{
             localStorage.setItem("token", userData.token)
-            this.props.updateCurrentUser(userData.user_data)
+            localStorage.setItem("userId", userData.user_data.id)   //added this to store current user 
+            this.props.updateCurrentUser(userData.user_data)   
             this.props.changeLog()
           }
         })

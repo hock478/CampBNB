@@ -10,17 +10,21 @@ class NewReservationForm extends React.Component {
         
         this.state = {
             start_date: '',
-            end_date: '',
-            property_id: null,
-            user_id: null
+            end_date: ''
+            // property_id: null,
+            // user_id: null
         }
     }
 
     componentDidMount(){
+
+        let x = parseInt(localStorage.userId)
+        
         this.setState({
             property_id: this.props.property.id,
-            user_id: this.props.userId
+            user_id: x
         })
+       
     }
 
     
@@ -31,20 +35,19 @@ class NewReservationForm extends React.Component {
       })
     }
 
-    onSubmitForm = () => {
-        // event.preventDefault()
-
+    onSubmitForm = (event) => {
+        event.preventDefault()
+     
         let reservationObj = {
             start_date: this.state.start_date,
             end_date: this.state.end_date,
             property_id: this.state.property_id, 
-            user_id: this.state.user_id
+            user_id: this.state.user_id 
         }
 
-        debugger
-
+        
         // fetch POST new reservation
-        fetch('https://localhost:3000/reservations', {
+        fetch('http://localhost:3000/reservations', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(reservationObj)
@@ -52,24 +55,27 @@ class NewReservationForm extends React.Component {
             .then( data => {
                 console.log("created new reservation")  
                 window.location.href="http://localhost:3001/reservations"
+                //redrect isn't working 
             }
             )
 
-        this.setState({
-            start_date: '',
-            end_date: '',
-            property_id: this.props.property_id,
-            user_id: this.props.user_id 
-        })
+        // this.setState({
+        //     start_date: '',
+        //     end_date: '',
+        //     property_id: this.props.property_id,
+        //     user_id: this.props.user_id 
+        // })
 
 
     }
 
   
     render(){
+
         return (
+
           
-            <Form className="ui form" onSubmit={this.onSubmitForm}>
+            <Form className="ui form" >
                 <h4 className="ui dividing header">Reserve This Property</h4>
 
                 {/* <div class="ui form"> */}

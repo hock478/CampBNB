@@ -14,8 +14,9 @@ class ConfirmReservation extends Component {
         alert("You must be signed in to do this")
         window.location.href= "http://localhost:3001/login"      }
     }
-    handleConfirm = () => {
+    handleConfirm = (event) => {
 
+      event.preventDefault()
 
     //   let reservationObj = {
     //     startDate: this.props.startDate,
@@ -27,7 +28,7 @@ class ConfirmReservation extends Component {
     //     // fetch POST new reservation
 
         this.setState({ open: false })    
-        this.props.createReservation()
+        this.props.createReservation(event)
 
              
 
@@ -48,8 +49,8 @@ class ConfirmReservation extends Component {
           header='Confirm Reservation'
           content='this is custom content'
           open={this.state.open}
-          onCancel={this.handleCancel}
-          onConfirm={this.handleConfirm}
+          onCancel={this.handleCancel }
+          onConfirm={this.handleConfirm }
           size='large'
           />
        

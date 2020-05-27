@@ -10,7 +10,7 @@ class ReservationContainer extends React.Component {
         
             <Card.Group className="ui link cards" itemsPerRow ={5} > 
             {
-                this.props.reservations.map(reso => <Reservation reservation={reso} key={reso.id} />)
+                this.props.reservations.map(reso => <Reservation reservation={reso} key={reso.id} onDelete={this.props.onDelete} />)
             }
     
             </Card.Group>

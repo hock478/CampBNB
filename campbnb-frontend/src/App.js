@@ -89,11 +89,11 @@ class App extends React.Component {
         <div className="App">
           
           <Header className="App-header" />
-          <Navbar currentUser={this.state.currentUser} changeLog={this.changeLog} loggedIn={this.state.loggedIn}/>
+          <Navbar currentUser={this.state.currentUser} changeLog={this.changeLog} loggedIn={this.state.loggedIn} updateCurrentUser={this.updateCurrentUser}/>
         <Switch>
           
           <Route exact path="/" render={() => <PropertiesPage /> } />
-          <Route exact path="/reservations" render={() =>  this.state.currentUser !== null ?  <ReservationsPage user={this.state.currentUser}/> : <Redirect to="/login"/> } />
+          <Route exact path="/reservations" render={() =>  this.state.currentUser ? <ReservationsPage user={this.state.currentUser}/> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog} /> } />
           <Route exact path="/properties/:id" render= {(routerProps) => { 
             let id = routerProps.match.params.id
            
@@ -104,9 +104,9 @@ class App extends React.Component {
           return <PropertyDetails user={this.state.currentUser} property={JSON.parse(localStorage.property)}  />
           }  }/>
           <Route exact path="/about" component={About}/>
-          <Route exact path="/profile" render={() => this.state.currentUser !== null ? <Profile /> : <Redirect to="/login"/> } />
+        <Route exact path="/profile" render={() => this.state.currentUser ? <Profile /> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog } /> } />
 
-          <Route exact path="/login" render={() => this.state.currentUser !== null ? <Redirect to="/profile"/> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog} /> }/>
+          {/* <Route exact path="/login" render={() => this.state.currentUser ? <Redirect to="/"/> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog} /> }/> */}
 
 
 

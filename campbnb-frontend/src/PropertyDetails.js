@@ -71,7 +71,7 @@ class PropertyDetails extends React.Component {
                 </Comment.Group>
             </Segment>
             <Segment>
-                <NewReservationForm property={this.props.property} user={this.props.user}  />
+                <NewReservationForm property={this.props.property} user={this.props.user} />
                 
 
             </Segment>

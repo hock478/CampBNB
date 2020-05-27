@@ -17,7 +17,7 @@ class PropertiesPage extends React.Component {
     .then(data => { 
         //need to remove this from local storage and hold in state
     localStorage.properties = JSON.stringify(data)
-    this.setState({ properties: JSON.parse(localStorage.properties)})
+    this.setState({ properties: data})
   })
 
     }

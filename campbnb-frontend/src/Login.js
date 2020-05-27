@@ -33,7 +33,8 @@ export default class Login extends React.Component{
           if(userData.error_message){
             alert(userData.error_message)
           }else{
-            this.props.updateCurrentUser(userData)
+            localStorage.setItem("token", userData.token)
+            this.props.updateCurrentUser(userData.user_data)
             this.props.changeLog()
           }
         })

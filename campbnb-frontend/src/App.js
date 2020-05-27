@@ -18,10 +18,10 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      currentUser: JSON.parse(localStorage.user),   //JSON.parse(localStorage.user)
+      currentUser: null,   //JSON.parse(localStorage.user)
       properties: [],
       reservations: [],
-      loggedIn: JSON.parse(localStorage.user) === null ? false : true
+      loggedIn: false
       // JSON.parse(localStorage.user) === null ? false : true
     
   
@@ -30,7 +30,25 @@ class App extends React.Component {
 
   componentDidMount(){
 
-    this.setState({currentUser: JSON.parse(localStorage.user)})
+    // this.setState({currentUser: JSON.parse(localStorage.user)})
+
+    if(localStorage.getItem("token") && localStorage.getItem("token") !== "null"){
+      fetch("http://localhost:3000/decode_token", {
+        headers: {
+          "Authenticate": localStorage.token
+        }
+      })
+      .then(res => res.json())
+      .then(userData => {
+        this.updateCurrentUser(userData)
+        this.changeLog()
+        //if error, don't update the state
+      })
+    }else{
+      console.log("No token found, user is not authenticated")
+    }
+
+
   
 
   }
@@ -45,7 +63,7 @@ class App extends React.Component {
   
   updateCurrentUser = (user) => {
     console.log(user)
-    localStorage.user = JSON.stringify(user)
+    // localStorage.user = JSON.stringify(user)
     
     this.setState({currentUser: user})
   }
@@ -75,7 +93,7 @@ class App extends React.Component {
         <Switch>
           
           <Route exact path="/" render={() => <PropertiesPage /> } />
-          <Route exact path="/reservations" render={() =>  localStorage.user !== "null" ?  <ReservationsPage user={this.state.currentUser}/> : <Redirect to="/login"/> } />
+          <Route exact path="/reservations" render={() =>  this.state.currentUser !== null ?  <ReservationsPage user={this.state.currentUser}/> : <Redirect to="/login"/> } />
           <Route exact path="/properties/:id" render= {(routerProps) => { 
             let id = routerProps.match.params.id
            
@@ -83,12 +101,12 @@ class App extends React.Component {
             let property = JSON.parse(localStorage.properties).find(p => p.id === parseInt(id))
     
             localStorage.property = JSON.stringify(property)
-          return <PropertyDetails userId={JSON.parse(localStorage.user).id} property={JSON.parse(localStorage.property)}  />
+          return <PropertyDetails user={this.state.currentUser} property={JSON.parse(localStorage.property)}  />
           }  }/>
           <Route exact path="/about" component={About}/>
-          <Route exact path="/profile" render={() => localStorage.user !== "null" ? <Profile /> : <Redirect to="/login"/> } />
+          <Route exact path="/profile" render={() => this.state.currentUser !== null ? <Profile /> : <Redirect to="/login"/> } />
 
-          <Route exact path="/login" render={() => localStorage.user !== "null" ? <Redirect to="/profile"/> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog} /> }/>
+          <Route exact path="/login" render={() => this.state.currentUser !== null ? <Redirect to="/profile"/> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog} /> }/>
 
 
 

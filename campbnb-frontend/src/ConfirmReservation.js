@@ -7,7 +7,13 @@ class ConfirmReservation extends Component {
 
     state = { open: false  }
 
-    handleButtonClick = () => this.setState({ open: true })
+    handleButtonClick = () => {
+      if(this.props.user && this.props.user !== "null"){
+        this.setState({ open: true })
+      }else{
+        alert("You must be signed in to do this")
+        window.location.href= "http://localhost:3001/login"      }
+    }
     handleConfirm = () => {
 
 

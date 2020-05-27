@@ -98,7 +98,7 @@ class NewReservationForm extends React.Component {
 
                 {/* <input name="startDate" type="date" value={this.state.startDate} onChange={this.onFormChange} />
                 <input name="endDate" type="date" value={this.state.endDate} onChange={this.onFormChange} /> */}
-                <ConfirmReservation reservation={this.state} createReservation={this.onSubmitForm}/>
+                <ConfirmReservation reservation={this.state} createReservation={this.onSubmitForm} user={this.props.user}/>
             </Form>
          
         )

@@ -6,14 +6,15 @@ export default class CommunityDetails extends React.Component {
         super()
         this.state = { 
             messages: [],
-            input: ""
+            input: "",
+            comInfo: {user: {username: ''}}
         }
     }
 
     componentDidMount(){
-        // fetch(`http://localhost:3000/messages/${this.props.id}`)
-        // .then(resp => resp.json())
-        // .then(data => this.setState({messages: data}))
+        fetch(`http://localhost:3000/communities/${this.props.id}`)
+        .then(resp => resp.json())
+        .then(data => this.setState({comInfo: data}))
 
         this.getMachineAction()
 
@@ -58,11 +59,30 @@ export default class CommunityDetails extends React.Component {
 
         return(
             <>
+            <div className="ui centered card">
+            <div className="image">
+                <img src="https://www.pngitem.com/pimgs/m/144-1447082_class-group-chat-group-chat-icon-white-png.png" />
+            </div>
+            <div className="content">
+                <a className="header">
+                        Topic: {this.state.comInfo.topic}
+                </a>
+                <div className="meta">
+                    Members: 2
+                </div>
+                <div className="description">
+                    Created by {this.state.comInfo.user.username}
+                    {/* <span className="right floated">
+                        {null} per night 
+                    </span> */}
+                </div>
+             </div>      
+        </div>
             {this.state.messages.map(mes => {
                   return <div className="container" key={mes.id}>
                   <p className="left">{mes.user.fullname}</p>
         <p>{mes.content}</p> 
-        <span className="time-right">11:00</span>
+            <span className="time-right">@{mes.user.username}</span>
       </div>
             })}
          <div class="ui action input">

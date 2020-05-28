@@ -1,5 +1,7 @@
 import React from 'react'
 import Community from './Community'
+import { Card } from 'semantic-ui-react'
+
 export default class CommunityContainer extends React.Component {
 
     componentDidMount(){
@@ -8,11 +10,13 @@ export default class CommunityContainer extends React.Component {
     render(){
 
         return(
-            <div id="com-container">
+            // <Card.Group className="ui link cards" itemsPerRow ={5}> <Card.Group/>
+            // {this.props.communities.map(com => <Community community={com} key={com.id}/> )}
 
-                {this.props.communities.map(com => <Community community={com} key={com.id}/> )}
-
-            </div>
+            <Card.Group className="ui link cards" itemsPerRow ={5} > 
+            {this.props.communities.map(com => <Community community={com} key={com.id}/> )}
+            </Card.Group>
+       
         )
     }
 }

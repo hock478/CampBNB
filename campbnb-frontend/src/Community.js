@@ -22,21 +22,12 @@ export default class Community extends React.Component {
                     Members: 2
                 </div>
                 <div className="description">
-                    Created by {this.props.community.user.username}
+                    Created by {this.props.community.user ? this.props.community.user.username : null}
                     {/* <span className="right floated">
                         {null} per night 
                     </span> */}
                 </div>
-
-              
-            </div>
-                
-                <div className="ui bottom attached button">
-                    {/* <Link to={`/properties/${this.props.property.id}`} > 
-                        <i className="plane icon"></i> Join Community
-                    </Link> */}
-                </div>
-           
+             </div>      
         </div>
             </>
         )

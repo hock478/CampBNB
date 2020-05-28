@@ -15,13 +15,23 @@ class Navbar extends React.Component {
     componentDidMount(){
        let a = this.state.active
        let b = this.props.history.location.pathname
-       
-       if (b.split("/")[0] === b.split("/")[1] || b.split("/").length > 2){
-        document.getElementById("/").className = "active item"
-        this.setState({active: "/"})
-       }else{
-        this.logicalFunction()
-       }
+        if(b.split("/")[1] === "communities"){
+          this.setState({active: "community"})
+          document.getElementById("community").className = "active item"
+        }else{
+          if (b.split("/")[0] === b.split("/")[1] || b.split("/").length > 2){
+            document.getElementById("/").className = "active item"
+            this.setState({active: "/"})
+           }else{
+            this.logicalFunction()
+           }
+        }
+      //  if (b.split("/")[0] === b.split("/")[1] || b.split("/").length > 2){
+      //   document.getElementById("/").className = "active item"
+      //   this.setState({active: "/"})
+      //  }else{
+      //   this.logicalFunction()
+      //  }
        
     //    document.getElementById(a).className = "active item"
     }
@@ -32,7 +42,12 @@ class Navbar extends React.Component {
         document.getElementById(this.state.active).className = "active item"
         this.setState({active: this.state.active})
       }else if(b.split("/").length > 2){
-        this.setState({active: "/"})
+        if(b.split("/")[1] === "communities"){
+          this.setState({active: "community"})
+        }else{
+          this.setState({active: "/"})
+
+        }
       }else{
         document.getElementById(b.split("/")[1]).className = "active item"
         this.setState({active: b.split("/")[1]})
@@ -54,7 +69,7 @@ class Navbar extends React.Component {
     logged = (event) => {
       if(event.target.innerText === "Log In"){
         this.props.history.location.pathname = "/"
-        // this.props.history.push("login")
+        this.props.history.push("profile")
       }else{
         localStorage.clear()
         this.props.updateCurrentUser(null)

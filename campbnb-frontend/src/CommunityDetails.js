@@ -68,10 +68,10 @@ export default class CommunityDetails extends React.Component {
                         Topic: {this.state.comInfo.topic}
                 </a>
                 <div className="meta">
-                    Members: 2
+                    Chat with Us!
                 </div>
                 <div className="description">
-                    Created by {this.state.comInfo.user.username}
+                    Created by @{this.state.comInfo.user.username}
                     {/* <span className="right floated">
                         {null} per night 
                     </span> */}

@@ -1,6 +1,6 @@
 import React from 'react'
 import NewReservationForm from './NewReservationForm'
-import { Segment, Image, Grid } from 'semantic-ui-react'
+import { Segment, Image, Rating, Grid } from 'semantic-ui-react'
 import Breadcrumb from './Breadcrumb'
 import Review from './Review'
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
@@ -45,6 +45,16 @@ class PropertyDetails extends React.Component {
                     <br />
                     <br />
                     <b>${this.props.property.price_per_night} per night</b>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    Average Rating:
+                    <br />
+                    <br />
+                    <div className="rating">
+                    <Rating icon='star' interactive="false" rating={3} maxRating={4} />
+                    </div>
                     </p>
 
 
@@ -109,17 +119,7 @@ class PropertyDetails extends React.Component {
                
 
 
-                {/* <Comment.Group>
-                {this.state.reviews.map(review => {
-                    let i = this.state.reviews.indexOf(review)
-                    
-                    return <Review review={this.props.property.reviews[i]} key={review.id} content={review}/>
-                    
-                }
-                )
-                }
-                </Comment.Group> */}
-
+                
 
 
 
@@ -127,11 +127,8 @@ class PropertyDetails extends React.Component {
                 <div className="ui comments">
                 {this.state.reviews.map(review => {
                     let i = this.state.reviews.indexOf(review)
-                    
                     return <Review review={this.props.property.reviews[i]} key={review.id} content={review}/>
-                    
-                }
-                )
+                })
                 }
                 </div> 
                 </div>

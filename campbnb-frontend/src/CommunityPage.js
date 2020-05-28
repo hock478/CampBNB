@@ -41,17 +41,27 @@ export default class CommunityPage extends React.Component {
     render(){
         return (
             <>
-        <h1>Community</h1>
+        <h1>Community Groups</h1>
+        <br />
+        <div className="ui center aligned grid">
         <div className="ui form">
         <div className="fields">
         <div className="field">
         <h4>Create a Community</h4>
       <label>Topic: </label>
       <input type="text" placeholder="Choose a topic..." value={this.state.input} onChange={this.handleInput}/>
+        <br />
+        <br />
       <div className="ui button" tabIndex="0" onClick={this.handleForm}>Create Community</div>
     </div>
     </div>
     </div>
+    </div>
+     <br />
+     <br />
+    <h3 className="ui dividing header">Explore Communities</h3>
+    <br />
+
         <CommunityContainer communities={this.state.communities}/>
             </>
         )

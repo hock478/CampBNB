@@ -22,7 +22,7 @@ export default class Community extends React.Component {
                     Join In!
                 </div>
                 <div className="description">
-                    Created by {this.props.community.user ? this.props.community.user.username : null}
+                    Created by @{this.props.community.user ? this.props.community.user.username : null}
                     {/* <span className="right floated">
                         {null} per night 
                     </span> */}

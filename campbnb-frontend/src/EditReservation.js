@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Confirm, Modal } from 'semantic-ui-react'
-import ResoDetailEdit from './ResoDetailEdit'
+// import ResoDetailEdit from './ResoDetailEdit'
 
 
 export default class EditReservation extends Component {
@@ -15,6 +15,7 @@ export default class EditReservation extends Component {
 
     render() {
         return (
+            <div>
 
             <div class="ui modal">
             <i class="close icon"></i>
@@ -23,7 +24,7 @@ export default class EditReservation extends Component {
             </div>
             <div class="image content">
               <div class="ui medium image">
-                <img src="/images/avatar/large/chris.jpg">
+                <img src="/images/avatar/large/chris.jpg"/>
               </div>
               <div class="description">
                 <div class="ui header">We've auto-chosen a profile image for you.</div>
@@ -32,7 +33,7 @@ export default class EditReservation extends Component {
               </div>
             </div>
             <div class="actions">
-              <div class="ui black deny button">
+              <div class="ui black deny button"></div>
                 Cancel
               </div>
               <div class="ui positive right labeled icon button">
@@ -41,7 +42,7 @@ export default class EditReservation extends Component {
               </div>
             </div>
           </div>
-
+          
         )
     }
 

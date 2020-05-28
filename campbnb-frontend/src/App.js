@@ -84,7 +84,7 @@ class App extends React.Component {
     this.setState({loggedIn: !this.state.loggedIn})
   }
 
-
+  
   render() {
     
       return (
@@ -112,7 +112,7 @@ class App extends React.Component {
         <Route exact path="/communities/:id" render= {(routerProps) => {
       
           let id = routerProps.match.params.id
-         return <CommunityDetails id={id} user={this.state.currentUser}/>
+         return <CommunityDetails id={parseInt(id)} user={this.state.currentUser}/>
 
           
 

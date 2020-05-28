@@ -1,6 +1,6 @@
 import React from 'react'
 import NewReservationForm from './NewReservationForm'
-import { Segment, Image } from 'semantic-ui-react'
+import { Segment, Image, Grid } from 'semantic-ui-react'
 import Breadcrumb from './Breadcrumb'
 import Review from './Review'
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
@@ -30,18 +30,47 @@ class PropertyDetails extends React.Component {
             <>
         
                 {/* <Breadcrumb property={this.props.property.name} />  */}
-            
+            <Segment.Group horizontal >
+            <Segment>
             <div className="ui relaxed grid">
                 <div className="two column row">
                 <div className="five wide column">
                     <br />
-                    <h3>{this.props.property.name}</h3>
+                    <h1>{this.props.property.name}</h1>
+                    <h3>
+                    {this.props.property.city}, {this.props.property.state}
+                    </h3>
+                    <p>
+                    {this.props.property.details}
+                    <br />
+                    <br />
+                    <b>${this.props.property.price_per_night} per night</b>
+                    </p>
+
+
+
                 </div>
-                <div className="eleven wide column"><img src={this.props.property.img_url} /></div>
+                <div className="eleven wide column">
+                    <img claseName="property-page-image" src={this.props.property.img_url} />
+                    </div>
                 </div>
             </div>
+            </Segment>
+            </Segment.Group> 
 
-            <Segment.Group horizontal>
+            {/* <div className="ui relaxed grid">
+                <div className="two column row">
+                    <div className="five wide column">
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div> */}
+            
+
+            <br />
+
+            <Segment.Group horizontal >
             <Segment>
             <h4 className="ui dividing header">ABOUT</h4>
 

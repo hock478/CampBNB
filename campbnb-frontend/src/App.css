@@ -39,7 +39,7 @@
 
 h2.ui.header.header-logo {
   margin-left: 15px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 html {
@@ -75,7 +75,21 @@ html {
 
 .eleven.wide.column {
   height: 400px;
+  
 }
+
+.eleven.wide.column img {
+  margin: -14px;
+  margin-right: -45px;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.ui.relaxed.grid {
+  height: 400px;
+}
+
 
 .trash.alternate.icon {
   color: rgb(224, 30, 30); 
@@ -94,12 +108,15 @@ html {
 #banner-image {
   width: 100%;
   max-height: 300px;
+  margin-left: -25px;
+  
 }
 
 .header-image {
-  width: 100%;
+  width: 130%;
   max-height: 300px;
 }
+
 .container {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
@@ -148,3 +165,16 @@ html {
   float: left;
   color: #999;
 }
+
+input.ui action input {
+  bottom:0;
+  width:90%;
+  height:5%;
+  
+  outline:none;
+  resize: none;
+  
+  border:none;
+  border-bottom:#000 medium solid !important;
+  position: fixed;
+  }

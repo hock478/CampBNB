@@ -6,9 +6,7 @@ import EditResoForm from './EditResoForm'
 export default class EditReservation extends Component {
 
   state = { 
-    open: false, 
-    start_date: '',
-    end_date: ''
+    open: false
     }  
 
   handleButtonClick = () => {
@@ -66,7 +64,7 @@ export default class EditReservation extends Component {
         
             console.log(data)  
             this.props.onReservationEdit(data) 
-            
+
             //change reservations array 
 
             // window.location.href = "http://localhost:3001/reservations"

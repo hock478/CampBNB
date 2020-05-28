@@ -46,8 +46,8 @@ class Reservation extends React.Component {
                         {this.props.reservation.property.city}, {this.props.reservation.property.state}
                     </div>
                     <div className="description">
-                        Check In: {this.props.reservation.start_date} <br />
-                        Check Out: {this.props.reservation.end_date}
+                        Check In:  {this.props.reservation.start_date} <br />
+                        Check Out:  {this.props.reservation.end_date}
                     </div>
                     <div className="extra content">
                         <span className="center floated">

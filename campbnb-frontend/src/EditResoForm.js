@@ -15,6 +15,8 @@ export default class EditResoForm extends React.Component {
          }    
 
          componentDidMount(){
+             console.log(this.props)
+
              this.setState({
                  start_date: this.props.reservation.start_date,
                  end_date: this.props.reservation.end_date
@@ -42,7 +44,7 @@ export default class EditResoForm extends React.Component {
                 <div className="column" id="details">
                         
                 <Form className="ui form" onChange={this.onFormChangeTwo} >
-                <h4 className="ui dividing header">Edit Reservation</h4>
+                <h4 className="ui dividing header">Reservation Dates</h4>
 
                             <div className="field">
                             <label>Start date</label>

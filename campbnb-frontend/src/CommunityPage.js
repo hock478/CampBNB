@@ -63,6 +63,10 @@ export default class CommunityPage extends React.Component {
     <br />
 
         <CommunityContainer communities={this.state.communities}/>
+        <br />
+        <br />
+        <br />
+        <br />
             </>
         )
     }

@@ -112,7 +112,19 @@ class PropertyDetails extends React.Component {
                 <h3 className="ui dividing header">LOCATION</h3>
                     <p>Search Google Maps for Directions.</p>
                     <Image className="ui centered large image" src={require('./layout/googlemap.png')} alt="Google Map" width='100%' />
+                <br />
+                <br />
+                <br />
 
+
+
+            </Segment>
+            <Segment>
+                <NewReservationForm property={this.props.property} user={this.props.user} />
+
+
+                <br />
+                <br />
                 <br />
                 <h3 className="ui dividing header">REVIEWS</h3>
                 <br />
@@ -132,11 +144,6 @@ class PropertyDetails extends React.Component {
                 }
                 </div> 
                 </div>
-
-
-            </Segment>
-            <Segment>
-                <NewReservationForm property={this.props.property} user={this.props.user} />
                 
 
             </Segment>

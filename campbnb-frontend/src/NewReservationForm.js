@@ -70,7 +70,7 @@ class NewReservationForm extends React.Component {
 
           
             <Form className="ui form" >
-                <h4 className="ui dividing header">Reserve This Property</h4>
+                <h3 className="ui dividing header">RESERVE THIS PROPERTY</h3>
 
                 {/* <div class="ui form"> */}
                         <div className="field">

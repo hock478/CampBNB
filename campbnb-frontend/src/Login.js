@@ -10,7 +10,7 @@ export default class Login extends React.Component{
         fullname: "",
         bio: "",
         image_url: "",
-
+        password_confirmation: "",
         signIn: true
       };
 
@@ -51,21 +51,25 @@ export default class Login extends React.Component{
             "Content-Type" : "application/json",
           },
           body: JSON.stringify({
+            "user": {
             username: this.state.username,
             password: this.state.password,
+            password_confirmation: this.state.password_confirmation,
             fullname: this.state.fullname,
             bio: this.state.bio,
             image_url: this.state.image_url
+            }
           })
         }).then(res => res.json())
         .then(userData => {
           console.log("response from the server", userData)
           if(userData.error_message){
-            alert(userData.error_message)
+            alert("There are errors in the form, fix them")
           }else{
+            debugger
             localStorage.setItem("token", userData.token)
             localStorage.setItem("userId", userData.user_data.id)   //added this to store current user 
-            this.props.updateCurrentUser(userData.user_data)   
+            this.props.updateCurrentUser(userData.user_data.user)   
             this.props.changeLog()
           }
         })
@@ -143,11 +147,21 @@ export default class Login extends React.Component{
                     name="password"
                     value={this.state.password} onChange={this.handleChange}
                   />
+                   <Form.Input
+                    fluid
+                    icon='lock'
+                    iconPosition='left'
+                    placeholder='Password Confirmation'
+                    type='password'
+                    name="password_confirmation"
+                    value={this.state.password_confirmation} onChange={this.handleChange}
+                  />
+                  
                    <Form.Input fluid icon='user' iconPosition='left' name="image_url" placeholder='Enter your image...' value={this.state.image_url} onChange={this.handleChange} />
                    <Form.Input fluid icon='user' iconPosition='left' name="bio" placeholder='Enter your bio...' value={this.state.bio} onChange={this.handleChange} />
 
                     <Button color='teal' fluid size='large' type="submit">
-                       Login
+                       Sign Up
                     </Button>
               </Segment> 
             </Form>

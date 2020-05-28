@@ -178,3 +178,8 @@ input.ui action input {
   border-bottom:#000 medium solid !important;
   position: fixed;
   }
+  
+ .comment {
+    border: 3px solid black; 
+
+  }

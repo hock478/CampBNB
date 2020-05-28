@@ -107,7 +107,7 @@ class App extends React.Component {
           return <PropertyDetails user={this.state.currentUser} property={JSON.parse(localStorage.property)}  />
           }  }/>
           <Route exact path="/about" component={About}/>
-        <Route exact path="/profile" render={() => this.state.currentUser ? <Profile /> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog } /> } />
+        <Route exact path="/profile" render={() => this.state.currentUser ? <Profile user={this.state.currentUser} /> : <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog } /> } />
         <Route exact path="/community" render={() => this.state.currentUser ? <CommunityPage user={this.state.currentUser}/>: <Login updateCurrentUser={this.updateCurrentUser} changeLog={this.changeLog}/>}/>
         <Route exact path="/communities/:id" render= {(routerProps) => {
       

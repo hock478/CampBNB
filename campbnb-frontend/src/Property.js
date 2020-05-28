@@ -17,7 +17,7 @@ export default class Property extends React.Component{
                         {this.props.property.name}
                 </a>
                 <div className="meta">
-                    {this.props.property.city},{this.props.property.state}
+                    {this.props.property.city}, {this.props.property.state}
                 </div>
                 <div className="description">
                     {this.props.property.details}

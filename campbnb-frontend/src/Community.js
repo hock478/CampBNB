@@ -19,7 +19,7 @@ export default class Community extends React.Component {
                         Topic: {this.props.community.topic}
                 </a>
                 <div className="meta">
-                    Members: 2
+                    Join In!
                 </div>
                 <div className="description">
                     Created by {this.props.community.user ? this.props.community.user.username : null}

@@ -72,31 +72,44 @@ class PropertyDetails extends React.Component {
 
             <Segment.Group horizontal >
             <Segment>
-            <h4 className="ui dividing header">ABOUT</h4>
+            <h3 className="ui dividing header">PROPERTY OWNER</h3>
 
-
-                <div className="ui card">
-                    <div className="image">
-                        <img src={this.props.property.owner.image_url}/>
-                    </div>
-                    <div className="content">
-                        <a className="header">{this.props.property.owner.fullname}</a>
-                        <div className="description">
-                        {this.props.property.owner.bio}
+                <div className="ui center aligned grid">
+                    <br />
+                    <div className="ui card">
+                        <div className="image">
+                            <img src={this.props.property.owner.image_url}/>
+                        </div>
+                        <div className="content">
+                            <a className="header">{this.props.property.owner.fullname}</a>
+                            <div className="description">
+                            {this.props.property.owner.bio}
+                            </div>
+                        </div>
+                        <div className="extra content">
+                            <a>
+                            <i className="user icon"></i>
+                            @{this.props.property.owner.username}
+                            </a>
                         </div>
                     </div>
-                    <div className="extra content">
-                        <a>
-                        <i className="user icon"></i>
-                        @{this.props.property.owner.username}
-                        </a>
-                    </div>
-                </div>
-                <h4 className="ui dividing header">LOCATION</h4>
-                    <p>some details about the location</p>
 
-                <h4 className="ui dividing header">REVIEWS</h4>
-                <Comment.Group>
+                    <br />
+
+                </div>
+
+                <br />
+                <h3 className="ui dividing header">LOCATION</h3>
+                    <p>Search Google Maps for Directions.</p>
+                    <Image className="ui centered large image" src={require('./layout/googlemap.png')} alt="Google Map" width='100%' />
+
+                <br />
+                <h3 className="ui dividing header">REVIEWS</h3>
+                <br />
+               
+
+
+                {/* <Comment.Group>
                 {this.state.reviews.map(review => {
                     let i = this.state.reviews.indexOf(review)
                     
@@ -105,7 +118,25 @@ class PropertyDetails extends React.Component {
                 }
                 )
                 }
-                </Comment.Group>
+                </Comment.Group> */}
+
+
+
+
+                <div className="ui center aligned grid">
+                <div className="ui comments">
+                {this.state.reviews.map(review => {
+                    let i = this.state.reviews.indexOf(review)
+                    
+                    return <Review review={this.props.property.reviews[i]} key={review.id} content={review}/>
+                    
+                }
+                )
+                }
+                </div> 
+                </div>
+
+
             </Segment>
             <Segment>
                 <NewReservationForm property={this.props.property} user={this.props.user} />

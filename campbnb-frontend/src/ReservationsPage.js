@@ -19,6 +19,21 @@ class ReservationPage extends React.Component {
     })
     }
 
+   onReservationEdit = (reservationObj) => {
+             
+
+
+            let newArray = [...this.state.reservations]
+            let reso = newArray.find(res => res.id === reservationObj.id)
+            let index = newArray.indexOf(reso)
+            newArray[index] = reservationObj
+    
+
+            this.setState({
+                reservations: newArray 
+            })
+    }
+
     onReservationDelete = (reservation) => {
         alert("Confirming that this reservation has been deleted!")
 
@@ -39,7 +54,7 @@ class ReservationPage extends React.Component {
     render(){
         return <div className="reservations-container">
             <h1>My Reservations</h1>
-            <ReservationsContainer reservations={this.state.reservations}  onDelete={this.onReservationDelete} /> 
+            <ReservationsContainer reservations={this.state.reservations}  onReservationEdit={this.onReservationEdit} onDelete={this.onReservationDelete} /> 
         </div>
     }
 }

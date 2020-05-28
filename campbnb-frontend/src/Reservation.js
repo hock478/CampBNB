@@ -31,6 +31,8 @@ class Reservation extends React.Component {
 
 
     render(){
+        console.log(this.props)
+
         return (
             <div className="ui card">
                 <div className="image">
@@ -56,8 +58,10 @@ class Reservation extends React.Component {
                     </div>
                     <br />
                     <div className="right floated">
-                    
-                        <i className="edit icon" onClick={this.onEditClick}></i>
+                        <EditReservation reservation={this.props.reservation} onReservationEdit={this.props.onReservationEdit} />
+                        
+                        {/* <i className="edit icon" onClick={this.onEditClick} reservation={this.props.reservation} ></i> */}
+
                         <i className="trash alternate icon" onClick={() => this.props.onDelete(this.props.reservation) } ></i>
                     </div>
                 </div>

@@ -43,15 +43,15 @@ export default class CommunityPage extends React.Component {
             <>
         <h1>Community</h1>
         <div className="ui form">
-  <div className="fields">
-    <div className="field">
+        <div className="fields">
+        <div className="field">
         <h4>Create a Community</h4>
       <label>Topic: </label>
       <input type="text" placeholder="Choose a topic..." value={this.state.input} onChange={this.handleInput}/>
       <div className="ui button" tabIndex="0" onClick={this.handleForm}>Create Community</div>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
         <CommunityContainer communities={this.state.communities}/>
             </>
         )

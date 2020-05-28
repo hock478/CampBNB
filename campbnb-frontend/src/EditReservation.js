@@ -1,48 +1,109 @@
 import React, { Component } from 'react'
 import { Button, Confirm, Modal } from 'semantic-ui-react'
-// import ResoDetailEdit from './ResoDetailEdit'
+import EditResoForm from './EditResoForm'
 
 
 export default class EditReservation extends Component {
 
-    // constructor(){
-    //     super();
-    //     this.state = {
-    //         open: false; 
-    //     }
-    // }
+  state = { 
+    open: false, 
+    start_date: '',
+    end_date: ''
+    }  
+
+  handleButtonClick = () => {
+         this.setState({ 
+           open: true
+        })
+  }
+
+  componentDidMount(){
+        
+    this.setState({
+        property_id: this.props.reservation.property_id,
+        user_id: this.props.reservation.user_id,
+        start_date: this.props.reservation.start_date,
+        end_date: this.props.reservation.end_date
+    })
+  
+  } 
+
+
+
+  onFormChange = (event) => {
+      this.setState({
+      [event.target.name]: event.target.value 
+    })
+  }
+
+
+
+  handleConfirm = (event) => {
+    event.preventDefault()
+
+    this.setState({ open: false })    
+      // this.props.createReservation(event)
+      // change this to a patch request form 
+
+      let reservationObj = {
+        user_id: this.state.user_id,
+        property_id: this.state.property_id, 
+        start_date: this.state.start_date,
+        end_date: this.state.end_date
+      }
+
+      console.log("reservation updated!")
+      console.log(reservationObj)
+
+
+      fetch(`http://localhost:3000/reservations/`+ this.props.reservation.id, {
+        method: 'PATCH',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(reservationObj)
+        })
+        .then(res => res.json())
+        .then( data => {
+        
+            console.log(data)  
+            this.props.onReservationEdit(data) 
+            
+            //change reservations array 
+
+            // window.location.href = "http://localhost:3001/reservations"
+           
+        })
+      
+
+
+  }
+
+  handleCancel = () => {
+      //simply closes for edit reservation confirmation form
+      this.setState({ open: false })
+
+  }
 
 
     render() {
+      console.log(this.props)
+    
         return (
-            <div>
+          <span>
 
-            <div class="ui modal">
-            <i class="close icon"></i>
-            <div class="header">
-              Profile Picture
-            </div>
-            <div class="image content">
-              <div class="ui medium image">
-                <img src="/images/avatar/large/chris.jpg"/>
-              </div>
-              <div class="description">
-                <div class="ui header">We've auto-chosen a profile image for you.</div>
-                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-                <p>Is it okay to use this photo?</p>
-              </div>
-            </div>
-            <div class="actions">
-              <div class="ui black deny button"></div>
-                Cancel
-              </div>
-              <div class="ui positive right labeled icon button">
-                Update
-                <i class="checkmark icon"></i>
-              </div>
-            </div>
-          </div>
+          <i className="edit icon" onClick={this.handleButtonClick}></i>
+
+          <Confirm
+          header='Edit Reservation'
+          content={<EditResoForm reservation={this.props.reservation}  onFormChange={this.onFormChange} />}
+          open={this.state.open}
+          onCancel={this.handleCancel }
+          onConfirm={this.handleConfirm }
+          size='large'
+          />
+
           
+
+          </span>
         )
     }
 
